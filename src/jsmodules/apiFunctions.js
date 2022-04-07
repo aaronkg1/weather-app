@@ -39,7 +39,7 @@ async function getUserLocation() {
 async function getCurrentWeather(location, coords) { //if coords are omitted, will get weather based on location name
     let requestUrl;
     if (!coords) {
-        requestUrl = `http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=5cb6f84ef5e0c6b1272b46dc003282f2`;
+        requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=5cb6f84ef5e0c6b1272b46dc003282f2`;
 }
     else {
         requestUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&APPID=5cb6f84ef5e0c6b1272b46dc003282f2`;
