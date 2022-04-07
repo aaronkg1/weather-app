@@ -26,13 +26,13 @@ const newRequest = (url) => {
 }
 
 async function getUserLocation() {
-    const requestUrl = 'http://ip-api.com/json/';
-    const response = await fetch(newRequest(requestUrl));
-    const userJSON = await response.json();
-    const location = {};
-    location.lat = userJSON.lat;
-    location.lon = userJSON.lon;
-    return location;
+        const requestUrl = 'http://ip-api.com/json/';
+        const response = await fetch(newRequest(requestUrl))
+        const userJSON = await response.json();
+        const location = {};
+        location.lat = userJSON.lat;
+        location.lon = userJSON.lon;
+        return location;
 }
 
 
@@ -57,22 +57,38 @@ async function getCurrentWeather(location, coords) { //if coords are omitted, wi
 async function getDetailedForecast(location, units) {
     let requestUrl;
     let locationInfo;
-    if (!location) {  //if location is omitted,  get coordinates of client location and use these to build a forecast
-    const userLocation = await getUserLocation();
-    locationInfo = await getCurrentWeather('', userLocation);
+    try {
+        if (!location) {  //if location is omitted,  get coordinates of client location and use these to build a forecast
+            const userLocation = await getUserLocation();
+            locationInfo = await getCurrentWeather('', userLocation);
+            }
+            else {
+            locationInfo = await getCurrentWeather(location, false);
+            }
+            requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${locationInfo.lat}&lon=${locationInfo.lon}&units=${units}&appid=5cb6f84ef5e0c6b1272b46dc003282f2`;
+            const response = await fetch(newRequest(requestUrl));
+            const weatherData = await response.json();
+            weatherData.name = locationInfo.name;
+            weatherData.isItNight = util.hasSunSet(weatherData); // assign name from first API request as name is not included in response from second request
+            localStorage.setItem('lastLocation', JSON.stringify(weatherData));
+        
+            console.log(weatherData);
+            return weatherData;
     }
-    else {
-    locationInfo = await getCurrentWeather(location, false);
+    catch {
+        locationInfo = await getCurrentWeather('London', false);
+        requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${locationInfo.lat}&lon=${locationInfo.lon}&units=${units}&appid=5cb6f84ef5e0c6b1272b46dc003282f2`;
+            const response = await fetch(newRequest(requestUrl));
+            const weatherData = await response.json();
+            weatherData.name = locationInfo.name;
+            weatherData.isItNight = util.hasSunSet(weatherData); // assign name from first API request as name is not included in response from second request
+            localStorage.setItem('lastLocation', JSON.stringify(weatherData));
+        
+            console.log(weatherData);
+            return weatherData;
+        
     }
-    requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${locationInfo.lat}&lon=${locationInfo.lon}&units=${units}&appid=5cb6f84ef5e0c6b1272b46dc003282f2`;
-    const response = await fetch(newRequest(requestUrl));
-    const weatherData = await response.json();
-    weatherData.name = locationInfo.name;
-    weatherData.isItNight = util.hasSunSet(weatherData); // assign name from first API request as name is not included in response from second request
-    localStorage.setItem('lastLocation', JSON.stringify(weatherData));
-
-    console.log(weatherData);
-    return weatherData;
+    
 
 }
 
@@ -80,6 +96,7 @@ async function getForecastFromSavedData(units) {
     const currentLocation = JSON.parse(localStorage.getItem('lastLocation'));
     const requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${currentLocation.lat}&lon=${currentLocation.lon}&units=${units}&appid=5cb6f84ef5e0c6b1272b46dc003282f2`;
     const response = await fetch(newRequest(requestUrl));
+
     const weatherData = await response.json();
     weatherData.name = currentLocation.name;
     weatherData.isItNight = util.hasSunSet(weatherData);
