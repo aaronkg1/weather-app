@@ -1,0 +1,42 @@
+.location-search {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    left: 4rem;
+    top: 3rem;
+}
+
+.search {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 4rem;
+    min-width: 100px;
+}
+
+.search::placeholder {
+    color: white;
+}
+
+.search-icon {
+    background-image: url(../assets/search_white_24dp.svg);
+    height: 4rem;
+    min-width: 4rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+.location-icon {
+    background-image: url(../assets/my_location_white_24dp.svg);
+    height: 4rem;
+    min-width: 4rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+
+
+
