@@ -50,6 +50,17 @@ table {
   --sunny-background: url(../assets/sunny-background.jpg);
   --rainy-background: url(../assets/rainy-background.jpg);
   --cloudy-background: url(../assets/background.jpg);
+  --clear-night-icon: url(../assets/clear-night.svg);
+  --heavy-rain-icon: url(../assets/heavy-rain.svg);
+  --light-rain-icon: url(../assets/light-rain.svg);
+  --light-snow-icon: url(../assets/light-snow.svg);
+  --lightning-icon: url(../assets/lightning.svg);
+  --moderate-rain-icon: url(../assets/moderate-rain.svg);
+  --moderate-rain-icon: url(../assets/moderate-rain.svg);
+  --overcast-icon: url(../assets/overcast.svg);
+  --part-cloud-icon: url(../assets/partly-cloudy.svg);
+  --snow-icon: url(../assets/snow.svg);
+  --sunny-icon: url(../assets/sunny.svg);
   --blue-text-color: rgb(95, 190, 225);
   --dark-blue-text-color: rgb(61, 112, 240);
   --gold-text-color: gold;
@@ -105,10 +116,19 @@ body {
 
 .weather-icon {
     height: 20rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
 }
 
 .daily-icon {
   height: 8rem;
+  min-width: 8rem;
+  width: auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
 }
 
 .weather {
@@ -183,4 +203,44 @@ body {
   animation:fadeInAnimation 3s normal both;
   opacity: 1;
 
+}
+
+.cl-night-icon {
+background-image: var(--clear-night-icon);
+}
+
+.heavy-rain-icon {
+background-image: var(--heavy-rain-icon);
+}
+
+.light-rain-icon {
+background-image: var(--light-rain-icon);
+}
+
+.light-snow-icon {
+background-image: var(--light-snow-icon);
+}
+
+.lightning-icon {
+background-image: var(--lightning-icon);
+}
+
+.moderate-rain-icon {
+background-image: var(--moderate-rain-icon);
+}
+
+.overcast-icon {
+background-image: var(--overcast-icon);
+}
+
+.prt-cloud-icon {
+background-image: var(--part-cloud-icon);
+}
+
+.snow-icon {
+background-image: var(--snow-icon);
+}
+
+.sunny-icon {
+background-image: var(--sunny-icon);
 }

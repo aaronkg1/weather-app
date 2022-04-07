@@ -26,7 +26,8 @@ function displayCurrentData(data, units) { //display current information
     location.textContent = data.name;
     dateTime.textContent = `${currentDay}, ${currentDateTime}`;
     currentTempDisplay.textContent = `${data.current.temp} ${tempUnit}`;
-    weatherIcon.setAttribute('src', displaySymbol(data, false));
+    weatherIcon.className = 'icon weather weather-icon';
+    weatherIcon.classList.add(displaySymbol(data, false));
 
 
 }
@@ -56,7 +57,7 @@ function displayMetaData(data, units) {
 }
 
 function displaySymbol(data, forecast) {
-    let symbolUrl;
+    let imageClass;
     let mainWeather;
     let weatherDescription;
     if (!forecast) { // if accessing daily data, different paths required
@@ -69,35 +70,35 @@ function displaySymbol(data, forecast) {
     }
     if (mainWeather == 'Clouds' || mainWeather == 'Overcast') {
         if (weatherDescription == 'few clouds') {
-            symbolUrl = '../src/assets/partly-cloudy.svg';
+            imageClass = 'prt-cloud-icon';
         }
         else 
-       symbolUrl = '../src/assets/overcast.svg';
+       imageClass = 'overcast-icon';
     }
     else if (mainWeather == 'Rain') {
         if (weatherDescription == 'Light rain') {
-            symbolUrl = '../src/assets/light-rain.svg';
+            imageClass = 'light-rain-icon';
         }
-        else symbolUrl = '../src/assets/heavy-rain.svg'; 
+        else imageClass = 'light-rain-icon'; 
     }
     else if (mainWeather == 'Snow') {
         if (weatherDescription == 'Heavy Snow') {
-            symbolUrl = '../src/assets/snow.svg';
+            imageClass = 'snow-icon';
         }
-        else symbolUrl = '../src/assets/light-snow.svg';
+        else imageClass = 'light-snow-icon';
         
     }
     else if (mainWeather == 'Clear') {
         if (data.isItNight) {
-            symbolUrl = '../src/assets/clear-night.svg';
+            imageClass = 'cl-night-icon';
         }
         else
-        symbolUrl = '../src/assets/sunny.svg';
+            imageClass = 'sunny-icon';
     }
     else if (mainWeather == 'thunderstorm') {
-        symbolUrl = '../src/assets/lightning.svg';
+        imageClass = 'lightning-icon';
     }
-    return symbolUrl;
+    return imageClass;
 }
 
 
@@ -153,10 +154,9 @@ function renderForecast(data, units) {
         const dayContainer = document.createElement('div');
         dayContainer.classList.add('day');
         dayContainer.textContent = dayValue;
-        const weatherSymbol = document.createElement('img');
+        const weatherSymbol = document.createElement('div');
         weatherSymbol.classList.add('daily-icon');
-        weatherSymbol.setAttribute('src', displaySymbol(day, true));
-        weatherSymbol.setAttribute('alt', day.weather.description);
+        weatherSymbol.classList.add(displaySymbol(day, true));
         dayContainer.appendChild(weatherSymbol);
         const tempDisplay = document.createElement('div');
         tempDisplay.classList.add('temps');
