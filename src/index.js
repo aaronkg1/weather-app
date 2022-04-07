@@ -21,7 +21,7 @@ async function searchForLocation(units) {
 }
 
 async function showLocalWeather(units) {
-    const weatherData = await apiFunctions.getDetailedForecast(false, units);
+    const weatherData = await apiFunctions.getDetailedForecast(false, units)
     domFunction.displayCurrentData(weatherData, units);
     domFunction.displayMetaData(weatherData, units);
     domFunction.renderForecast(weatherData, units);
@@ -59,7 +59,7 @@ changeUnitsBtn.addEventListener('click', () => {
 })
 
 if (!localStorage.getItem('lastLocation')) { //check if location stored in localStorage, if not use client IP
-    showLocalWeather();
+    showLocalWeather().catch(searchForLocation(units));
 }
 
-else {buildPageFromSavedData();}
+else {buildPageFromSavedData().catch(searchForLocation(units));}
