@@ -26,12 +26,12 @@ const newRequest = (url) => {
 }
 
 async function getUserLocation() {
-        const requestUrl = 'http://ip-api.com/json/';
+        const requestUrl = 'https://ipwhois.app/json/';
         const response = await fetch(newRequest(requestUrl))
         const userJSON = await response.json();
         const location = {};
-        location.lat = userJSON.lat;
-        location.lon = userJSON.lon;
+        location.lat = userJSON.latitude;
+        location.lon = userJSON.longitude;
         return location;
 }
 
