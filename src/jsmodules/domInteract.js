@@ -69,7 +69,7 @@ function displaySymbol(data, forecast) {
     }
     if (mainWeather == 'Clouds' || mainWeather == 'Overcast') {
         if (weatherDescription == 'few clouds') {
-            symbolUrl = './src/assets/partly-cloudy.svg'
+            symbolUrl = '../src/assets/partly-cloudy.svg';
         }
         else 
        symbolUrl = '../src/assets/overcast.svg';
@@ -78,24 +78,24 @@ function displaySymbol(data, forecast) {
         if (weatherDescription == 'Light rain') {
             symbolUrl = '../src/assets/light-rain.svg';
         }
-        else symbolUrl = './src/assets/heavy-rain.svg'; 
+        else symbolUrl = '../src/assets/heavy-rain.svg'; 
     }
     else if (mainWeather == 'Snow') {
         if (weatherDescription == 'Heavy Snow') {
             symbolUrl = '../src/assets/snow.svg';
         }
-        else symbolUrl = './src/assets/light-snow.svg';
+        else symbolUrl = '../src/assets/light-snow.svg';
         
     }
     else if (mainWeather == 'Clear') {
         if (data.isItNight) {
-            symbolUrl = './src/assets/clear-night.svg';
+            symbolUrl = '../src/assets/clear-night.svg';
         }
         else
         symbolUrl = '../src/assets/sunny.svg';
     }
     else if (mainWeather == 'thunderstorm') {
-        symbolUrl = './src/assets/lightning.svg';
+        symbolUrl = '../src/assets/lightning.svg';
     }
     return symbolUrl;
 }
