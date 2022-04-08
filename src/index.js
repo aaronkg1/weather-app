@@ -81,7 +81,7 @@ changeUnitsBtn.addEventListener("click", () => {
 
 if (!localStorage.getItem("lastLocation")) {
   //check if location stored in localStorage, if not use client IP
-  showLocalWeather();
+  showLocalWeather(units);
 } else {
   buildPageFromSavedData();
 }
