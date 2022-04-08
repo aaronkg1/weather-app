@@ -146,6 +146,11 @@ body {
 
 .day {
   opacity: 0;
+  font-size: 6rem;
+}
+
+.hour {
+  opacity: 0;
 }
 
 .fade-in {
@@ -251,6 +256,32 @@ background-image: var(--snow-icon);
 background-image: var(--sunny-icon);
 }
 
+.dot {
+  height: 20px;
+  width: 20px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.active {
+  background-color: black;
+}
+.hour {
+  font-size: 3rem;
+}
+.timeframe-toggle {
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}
+
+
+
+
+
 
 @media only screen and (max-width: 768px) {
   html {
@@ -286,10 +317,16 @@ background-image: var(--sunny-icon);
   font-size: 3rem;
   white-space: nowrap;
 }
+.hour {
+  font-size: 3rem;
+  white-space: nowrap;
+}
 .background-container {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+
+
 
 
 

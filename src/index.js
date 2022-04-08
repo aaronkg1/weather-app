@@ -9,6 +9,8 @@ const searchButton = document.querySelector('.search-icon');
 const localWeatherBtn = document.querySelector('.location-icon');
 const changeUnitsBtn = document.querySelector('.units');
 const searchBar = document.querySelector('.search');
+const timeframeToggle = document.querySelector('.timeframe-toggle');
+const controls = document.querySelector('.hour-controls');
 let units = 'metric';
 
 async function searchForLocation(units) {
@@ -16,7 +18,7 @@ async function searchForLocation(units) {
     const weatherData = await apiFunctions.getDetailedForecast(locationName, units);
     domFunction.displayCurrentData(weatherData, units);
     domFunction.displayMetaData(weatherData, units);
-    domFunction.renderForecast(weatherData, units);
+    domFunction.renderForecast(weatherData, units);   
     domFunction.backgroundSelect(weatherData);
 
 }
@@ -25,7 +27,7 @@ async function showLocalWeather(units) {
     const weatherData = await apiFunctions.getDetailedForecast(false, units);
     domFunction.displayCurrentData(weatherData, units);
     domFunction.displayMetaData(weatherData, units);
-    domFunction.renderForecast(weatherData, units);
+    domFunction.renderForecast(weatherData, units);   
     domFunction.backgroundSelect(weatherData);
 }
 
@@ -33,7 +35,7 @@ async function buildPageFromSavedData() {
     const weatherData = await apiFunctions.getForecastFromSavedData(units);
     domFunction.displayCurrentData(weatherData, units);
     domFunction.displayMetaData(weatherData, units);
-    domFunction.renderForecast(weatherData, units);
+    domFunction.renderForecast(weatherData, units);   
     domFunction.backgroundSelect(weatherData);
 }
 
@@ -50,7 +52,18 @@ searchBar.addEventListener('keypress', (e) => {
         searchBar.blur();
        
     }
+});
+timeframeToggle.addEventListener('click', () => {
+    if (timeframeToggle.textContent == 'Daily') {
+        timeframeToggle.textContent = 'Hourly';
+        controls.classList.remove('hidden');
+    }
+    else  if (timeframeToggle.textContent == 'Hourly') {
+    timeframeToggle.textContent = 'Daily';
+    controls.classList.add('hidden');
+    }
 })
+
 
 
 

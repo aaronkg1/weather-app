@@ -4,6 +4,8 @@ import * as util from './util';
 
 
 
+
+
 function displayCurrentData(data, units) { //display current information
     let speedSuffix;
     let tempUnit;
@@ -105,7 +107,6 @@ function displaySymbol(data, forecast) {
 
 function backgroundSelect(data) {
     const backgroundContainer = document.querySelector('.background-container');
-    const body = document.querySelector('body');
     const mainWeather = data.current.weather[0].main;
 
     backgroundContainer.classList.remove('background-container');
@@ -129,13 +130,23 @@ function backgroundSelect(data) {
 }
 
 function renderForecast(data, units) {
+    const timeframeToggle = document.querySelector('.timeframe-toggle');
+    if (timeframeToggle.textContent == '') {
+        timeframeToggle.textContent = 'Daily'
+    }
+    timeframeToggle.addEventListener('click', () => { 
+    renderForecast(data, units);
+    });
+
     let speedSuffix;
     let tempUnit;
     let dayContainers = [];
-    const dailyForecastContainer = document.querySelector('.daily-forecast');
-    dailyForecastContainer.innerHTML = '';
-    const days = data.daily.slice(1); //removes today from the forecast
+    const forecastContainer = document.querySelector('.daily-forecast');
+    forecastContainer.className = 'daily-forecast';
+    forecastContainer.innerHTML = '';
 
+    if (timeframeToggle.textContent == 'Daily') {
+    const days = data.daily.slice(1); //removes today from the forecast
     if (units === 'metric') {
         speedSuffix = 'km/h';
         tempUnit = '°C';
@@ -144,7 +155,6 @@ function renderForecast(data, units) {
         speedSuffix = 'mph';
         tempUnit = '°F';
     }
-
     days.forEach((day) => {
         const maxTemp = `${day.temp.max} ${tempUnit}`;
         const minTemp = `${day.temp.min} ${tempUnit}`;
@@ -167,11 +177,60 @@ function renderForecast(data, units) {
         lowTemp.textContent = minTemp;
         tempDisplay.appendChild(highTemp);
         tempDisplay.appendChild(lowTemp);
-        dailyForecastContainer.appendChild(dayContainer);
+        forecastContainer.appendChild(dayContainer);
         dayContainers.push(dayContainer);
           
     })
-    util.oneByone(dayContainers, addFadeClass, 300);  
+    util.oneByone(dayContainers, addFadeClass, 150);  
+}
+ else {
+    let hourContainers = [];
+    let hours;
+    forecastContainer.classList.add('hourly');
+    const dots = [...document.querySelectorAll('.dot')];
+    const activeDot = document.querySelector('.active');
+    const dotIndex = dots.indexOf(activeDot);
+    let hours1 = data.hourly.slice(1, 9);
+    let hours2 = data.hourly.slice(9, 17);
+    let hours3 = data.hourly.slice(17, 25);
+
+    (dotIndex == 2) ? hours = hours3 : (dotIndex == 1) ? hours = hours2 : hours = hours1;
+    
+    
+    if (units === 'metric') {
+        tempUnit = '°C';
+    }
+    else {
+        tempUnit = '°F';
+    }
+    hours.forEach((hour) => {
+        const temp = `${hour.temp} ${tempUnit}`;
+        const hourValue = util.getHourFromUnix(hour.dt, data.timezone);
+        const hourContainer = document.createElement('div');
+        hourContainer.classList.add('hour');
+        hourContainer.textContent = `${hourValue}:00`;
+        const weatherSymbol = document.createElement('div');
+        weatherSymbol.classList.add('daily-icon');
+        weatherSymbol.classList.add(displaySymbol(hour, true));
+        hourContainer.appendChild(weatherSymbol);
+        const tempDisplay = document.createElement('div');
+        tempDisplay.classList.add('temps');
+        hourContainer.appendChild(tempDisplay);
+        tempDisplay.textContent = temp;
+        forecastContainer.appendChild(hourContainer);
+        hourContainers.push(hourContainer);
+    })
+    
+    const dotsNodeList = document.querySelectorAll('.dot'); //add listener to flick between hours
+    dotsNodeList.forEach(dot => {
+        dot.addEventListener('click', () => {
+            dotsNodeList.forEach(item => item.className = 'dot');
+            dot.classList.add('active');
+            renderForecast(data, units);
+        })
+    })
+    util.oneByone(hourContainers, addFadeClass, 150); 
+}
 }
 
 function clearSearchBar() {

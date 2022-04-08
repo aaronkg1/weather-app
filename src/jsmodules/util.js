@@ -1,10 +1,9 @@
-import getTime from "date-fns/getTime";
 import getDay from "date-fns/getDay";
 import fromUnixTime from "date-fns/fromUnixTime";
 import format from "date-fns/format";
 import isAfter from "date-fns/isAfter";
 import { utcToZonedTime } from 'date-fns-tz/esm';
-import { isBefore } from "date-fns";
+import { getHours, isBefore } from "date-fns";
 
 
 function formatDate(unix, zone) {
@@ -42,7 +41,6 @@ function formatDate(unix, zone) {
    return dateToReturn;
 }
 
-
 function getDayFromDate(unix, timeZone) {
     const dateLocal = fromUnixTime(unix);
     const date = utcToZonedTime(dateLocal, timeZone)
@@ -71,7 +69,6 @@ function getDayFromDate(unix, timeZone) {
     else  {
         throw Error('Invalid date');
     }
-
 }
 
 function hasSunSet(location) {
@@ -98,4 +95,12 @@ function oneByone(array, fn, ms) {
     }
     loop();
 }
-export {formatDate, getDayFromDate, hasSunSet, oneByone}
+
+function getHourFromUnix(unix, timeZone) {
+    const dateLocal = fromUnixTime(unix);
+    const date = utcToZonedTime(dateLocal, timeZone)
+    const hour = getHours(date);
+    return hour;
+}
+
+export {formatDate, getDayFromDate, getHourFromUnix, hasSunSet, oneByone}
