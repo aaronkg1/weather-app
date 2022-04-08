@@ -72,7 +72,7 @@ changeUnitsBtn.addEventListener("click", () => {
   if (units == "metric") {
     units = "imperial";
     changeUnitsBtn.textContent = " / °C";
-  } else {
+  } else if (units == 'imperial') {
     units = "metric";
     changeUnitsBtn.textContent = " / °F";
   }
@@ -80,7 +80,7 @@ changeUnitsBtn.addEventListener("click", () => {
 });
 
 if (!localStorage.getItem("lastLocation")) {
-  //check if location stored in localStorage, if not use client IP
+  //if last location not stored in localStorage, show the local weather
   showLocalWeather(units);
 } else {
   buildPageFromSavedData();
