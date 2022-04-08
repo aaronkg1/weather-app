@@ -16,7 +16,7 @@ function displayCurrentData(data, units) { //display current information
         speedSuffix = 'mph';
         tempUnit = '°F';
     }
-
+    const weatherDisplay = document.querySelector('.weather-info');
     const location = document.querySelector('.location');
     const dateTime = document.querySelector('.time');
     const currentTempDisplay = document.querySelector('.temp');
@@ -29,6 +29,7 @@ function displayCurrentData(data, units) { //display current information
     weatherIcon.className = 'icon weather weather-icon';
     weatherIcon.classList.add(displaySymbol(data, false));
 
+    addFadeClass(weatherDisplay);
 
 }
 
@@ -112,22 +113,19 @@ function backgroundSelect(data) {
     backgroundContainer.classList.add('background-container');
 
     if (mainWeather == 'Snow') {
-        backgroundContainer.classList.add('snowy');
-        
-        
+        backgroundContainer.classList.add('snowy');  
     }
-
     else if (mainWeather == 'Clear') {
-        backgroundContainer.classList.add('sunny');
-
+        if (data.isItNight) {
+            backgroundContainer.classList.add('night');
+        }
+        else  backgroundContainer.classList.add('sunny');
     }
     else if (mainWeather == 'Rain') {
         backgroundContainer.classList.add('rainy');
     }
 
-    else {
-        backgroundContainer.classList.add('cloudy')
-    }
+    else backgroundContainer.classList.add('cloudy');
 }
 
 function renderForecast(data, units) {

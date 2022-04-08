@@ -91,7 +91,7 @@ function oneByone(array, fn, ms) {
             fn(array[i]);
             i++;
             if (i < array.length) {
-                loop();
+            loop();
             }
         }, ms);
         

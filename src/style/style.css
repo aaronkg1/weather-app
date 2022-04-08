@@ -50,6 +50,7 @@ table {
   --sunny-background: url(../assets/sunny-background.jpg);
   --rainy-background: url(../assets/rainy-background.jpg);
   --cloudy-background: url(../assets/background.jpg);
+  --night-background: url(../assets/clear-night-background.jpg);
   --clear-night-icon: url(../assets/clear-night.svg);
   --heavy-rain-icon: url(../assets/heavy-rain.svg);
   --light-rain-icon: url(../assets/light-rain.svg);
@@ -202,7 +203,12 @@ body {
   background-image: var(--cloudy-background);
   animation:fadeInAnimation 3s normal both;
   opacity: 1;
+}
 
+.night {
+  background-image: var(--night-background);
+  animation:fadeInAnimation 3s normal both;
+  opacity: 1;
 }
 
 .cl-night-icon {
