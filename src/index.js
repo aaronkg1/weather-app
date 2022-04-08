@@ -32,7 +32,7 @@ async function showLocalWeather(units) {
   domFunction.backgroundSelect(weatherData);
 }
 
-async function buildPageFromSavedData() {
+async function buildPageFromSavedData(units) {
   const weatherData = await apiFunctions.getForecastFromSavedData(units);
   domFunction.displayCurrentData(weatherData, units);
   domFunction.displayMetaData(weatherData, units);
@@ -76,12 +76,13 @@ changeUnitsBtn.addEventListener("click", () => {
     units = "metric";
     changeUnitsBtn.textContent = " / °F";
   }
-  buildPageFromSavedData();
+  buildPageFromSavedData(units);
 });
 
 if (!localStorage.getItem("lastLocation")) {
   //if last location not stored in localStorage, show the local weather
-  showLocalWeather(units);
+  showLocalWeather('metric');
+
 } else {
-  buildPageFromSavedData();
+  buildPageFromSavedData('metric');
 }
