@@ -56,6 +56,7 @@ table {
   --light-rain-icon: url(../assets/light-rain.svg);
   --light-snow-icon: url(../assets/light-snow.svg);
   --lightning-icon: url(../assets/lightning.svg);
+  --misty-icon: url(../assets/misty.svg);
   --moderate-rain-icon: url(../assets/moderate-rain.svg);
   --moderate-rain-icon: url(../assets/moderate-rain.svg);
   --overcast-icon: url(../assets/overcast.svg);
@@ -92,7 +93,7 @@ body {
   }
 
   .location {
-    font-size: 4em;
+    font-size: 4rem;
     font-weight: bold;
   }
 
@@ -255,6 +256,9 @@ background-image: var(--snow-icon);
 .sunny-icon {
 background-image: var(--sunny-icon);
 }
+.misty-icon {
+  background-image: var(--misty-icon);
+}
 
 .dot {
   height: 20px;
@@ -326,7 +330,13 @@ background-image: var(--sunny-icon);
   padding-bottom: 2rem;
 }
 
-
+.location  {
+  overflow-wrap: break-word;
+  /* flex-wrap: unset; */
+  white-space: unset;
+  word-wrap: break-word;
+  flex-shrink: 1;
+}
 
 
 

@@ -98,8 +98,11 @@ function displaySymbol(data, forecast) {
         else
             imageClass = 'sunny-icon';
     }
-    else if (mainWeather == 'thunderstorm') {
+    else if (mainWeather == 'Thunderstorm') {
         imageClass = 'lightning-icon';
+    }
+    else if (mainWeather == 'Mist') {
+        imageClass = 'misty-icon'
     }
     return imageClass;
 }
