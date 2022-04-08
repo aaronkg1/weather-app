@@ -23,6 +23,9 @@ function displayCurrentData(data, units) { //display current information
     const dateTime = document.querySelector('.time');
     const currentTempDisplay = document.querySelector('.temp');
     const weatherIcon = document.querySelector('.weather-icon');
+    const thermometerIcon = document.querySelector('.thermometer');
+    thermometerIcon.className = 'thermometer';
+    thermometerIcon.classList.add(displayThemometer(data.current.temp, units));
     const currentDateTime = util.formatDate(data.current.dt, data.timezone);
     const currentDay = util.getDayFromDate(fromUnixTime(data.current.dt));
     location.textContent = data.name;
@@ -57,6 +60,30 @@ function displayMetaData(data, units) {
     humidityDisplay.textContent = `${data.current.humidity}` + `%`;
     rainChanceDisplay.textContent = `${data.hourly[0].pop}` + `%`;
     windSpeedDisplay.textContent = `${data.current.wind_speed} ${speedSuffix}`;
+}
+
+function displayThemometer(temperature, units) {
+    const freezing = 'freezing-temp';
+    const normal = 'normal-temp';
+    const warm = 'warm-temp'
+if (units == 'metric') {
+    if (temperature <= 0) {
+        return freezing;
+    }
+    else if (temperature <= 15) {
+        return normal;
+    }
+    else return warm;
+}
+else {
+    if (temperature <= 32) {
+        return freezing;
+    }
+    else if (temperature <= 59) {
+        return normal
+    }
+    else return freezing;
+}
 }
 
 function displaySymbol(data, forecast) {

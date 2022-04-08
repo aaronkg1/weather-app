@@ -63,9 +63,13 @@ table {
   --part-cloud-icon: url(../assets/partly-cloudy.svg);
   --snow-icon: url(../assets/snow.svg);
   --sunny-icon: url(../assets/sunny.svg);
+  --freezing-thermometer: url(../assets/freezing.svg);
+  --normal-thermometer: url(../assets/normal.svg);
+  --warm-thermometer: url(../assets/warm.svg);
   --blue-text-color: rgb(95, 190, 225);
   --dark-blue-text-color: rgb(61, 112, 240);
-  --gold-text-color: gold;
+  --cold-text-color: rgb(255, 217, 0);
+
 }
 html {
   box-sizing: border-box;
@@ -188,7 +192,7 @@ body {
 .snowy {
   background-image: var(--snowy-background);
   animation:fadeInAnimation 3s normal both;
-  color: var(--gold-text-color);
+  color: var(--cold-text-color);
   opacity: 1;
 
 }
@@ -259,7 +263,24 @@ background-image: var(--sunny-icon);
 .misty-icon {
   background-image: var(--misty-icon);
 }
+.freezing-temp {
+  background-image: var(--freezing-thermometer);
+}
+.normal-temp {
+  background-image: var(--normal-thermometer);
+}
 
+.warm-temp {
+  background-image: var(--warm-thermometer);
+}
+.thermometer {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left center;
+
+  height: 6rem;
+  width: 6rem;
+}
 .dot {
   height: 20px;
   width: 20px;
