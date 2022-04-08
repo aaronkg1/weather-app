@@ -7,7 +7,8 @@ import * as domFunction from './jsmodules/domInteract';
 
 const searchButton = document.querySelector('.search-icon');
 const localWeatherBtn = document.querySelector('.location-icon');
-const changeUnitsBtn = document.querySelector('.units')
+const changeUnitsBtn = document.querySelector('.units');
+const searchBar = document.querySelector('.search');
 let units = 'metric';
 
 async function searchForLocation(units) {
@@ -40,6 +41,15 @@ searchButton.addEventListener('click', () => {
     searchForLocation(units);
     domFunction.clearSearchBar();
 })
+
+searchBar.addEventListener('keypress', (e) => {
+    if (e.code === 'Enter') {
+        searchForLocation(units);
+        domFunction.clearSearchBar();
+    }
+})
+
+
 
 localWeatherBtn.addEventListener('click', () => {
     showLocalWeather(units);
