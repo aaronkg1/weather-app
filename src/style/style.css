@@ -277,7 +277,6 @@ background-image: var(--sunny-icon);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: left center;
-
   height: 6rem;
   width: 6rem;
 }
@@ -333,6 +332,7 @@ background-image: var(--sunny-icon);
 }
 .time {
   font-size: 2em;
+  padding-bottom: 1rem;
 }
 .temp, .units {
   white-space: nowrap;
@@ -358,6 +358,11 @@ background-image: var(--sunny-icon);
   flex-shrink: 1;
   text-align: center;
   padding-bottom: 2rem;
+}
+.thermometer {
+  height: 4rem;
+  width: 4rem;
+  padding-right: 2rem;
 }
 
 
