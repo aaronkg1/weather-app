@@ -46,6 +46,8 @@ searchBar.addEventListener('keypress', (e) => {
     if (e.code === 'Enter') {
         searchForLocation(units);
         domFunction.clearSearchBar();
+        searchBar.setAttribute('inputmode', none); //close keyboard for mobile users
+        searchBar.setAttribute('inputmode', text);
     }
 })
 
