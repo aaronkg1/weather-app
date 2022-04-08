@@ -250,3 +250,47 @@ background-image: var(--snow-icon);
 .sunny-icon {
 background-image: var(--sunny-icon);
 }
+
+
+@media only screen and (max-width: 768px) {
+  html {
+    font-size: 10px;
+    font-family: 'Montserrat', sans-serif;
+  
+  }
+  body {
+    max-width: 100vw;
+    min-width: 100vw;
+  }
+
+  .weather-icon {
+    height: 15rem;
+    min-width: 15rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.weather {
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.time {
+  font-size: 2em;
+}
+.temp, .units {
+  white-space: nowrap;
+  font-size: 4em;
+}
+.day {
+  font-size: 3rem;
+  white-space: nowrap;
+}
+.background-container {
+  padding-top: 2rem;
+}
+
+
+
+
+}

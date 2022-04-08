@@ -2,10 +2,11 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 100%;
+    width: fit-content;
     position: relative;
     left: 4rem;
     top: 3rem;
+    
 }
 
 .search {
@@ -36,6 +37,34 @@
     background-size: contain;
     background-repeat: no-repeat;
     cursor: pointer;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .location-search{
+        justify-content: space-evenly;
+        max-width: 100%;
+        position: unset;
+        margin-bottom: 2rem;
+        
+    }
+    .search {
+        background: transparent;
+        border: none;
+        outline: none;
+        color: white;
+        padding-left: 2rem;
+        font-size: 3em;
+        max-width: 80%;
+    }
+    .search-icon {
+        height: 3rem;
+        min-width: 3rem;
+    }
+    .location-icon {
+        height: 3rem;
+        min-width: 3rem;
+        padding-right: 2rem;
+    }
   }
 
 
