@@ -74,9 +74,8 @@ async function getDetailedForecast(location, units) {
     weatherData.name = locationInfo.name;
     weatherData.isItNight = util.hasSunSet(weatherData); // assign name from first API request as name is not included in response from second request
     localStorage.setItem("lastLocation", JSON.stringify(weatherData));
-    console.log(weatherData);
     return weatherData;
-  } catch {
+  } catch(err) {
     locationInfo = await getCurrentWeather("london", false);
     requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${locationInfo.lat}&lon=${locationInfo.lon}&units=${units}&appid=5cb6f84ef5e0c6b1272b46dc003282f2`;
     const response = await fetch(newRequest(requestUrl));
