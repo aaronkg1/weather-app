@@ -332,10 +332,11 @@ background-image: var(--sunny-icon);
 
 .location  {
   overflow-wrap: break-word;
-  /* flex-wrap: unset; */
   white-space: unset;
   word-wrap: break-word;
   flex-shrink: 1;
+  text-align: center;
+  padding-bottom: 2rem;
 }
 
 
