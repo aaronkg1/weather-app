@@ -40,20 +40,14 @@ async function buildPageFromSavedData() {
 searchButton.addEventListener('click', () => {
     searchForLocation(units);
     domFunction.clearSearchBar();
-    searchBar.setAttribute('inputmode', none); //close keyboard for mobile users
-        setTimeout(()=> {
-            searchBar.setAttribute('inputmode', text);
-        }, 1000);
+    searchBar.blur();
 })
 
 searchBar.addEventListener('keypress', (e) => {
     if (e.code === 'Enter') {
         searchForLocation(units);
         domFunction.clearSearchBar();
-        searchBar.setAttribute('inputmode', none); //close keyboard for mobile users
-        setTimeout(()=> {
-            searchBar.setAttribute('inputmode', text);
-        }, 1000);
+        searchBar.blur();
        
     }
 })
