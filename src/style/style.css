@@ -288,6 +288,7 @@ background-image: var(--sunny-icon);
 }
 .background-container {
   padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 
