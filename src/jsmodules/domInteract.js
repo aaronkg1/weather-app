@@ -82,7 +82,7 @@ else {
     else if (temperature <= 59) {
         return normal
     }
-    else return freezing;
+    else return warm;
 }
 }
 
