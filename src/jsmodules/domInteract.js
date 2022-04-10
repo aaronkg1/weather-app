@@ -27,7 +27,7 @@ function displayCurrentData(data, units) { //display current information
     thermometerIcon.className = 'thermometer';
     thermometerIcon.classList.add(displayThemometer(data.current.temp, units));
     const currentDateTime = util.formatDate(data.current.dt, data.timezone);
-    const currentDay = util.getDayFromDate(fromUnixTime(data.current.dt));
+    const currentDay = util.getDayFromDate(data.current.dt, data.timezone);
     location.textContent = data.name;
     dateTime.textContent = `${currentDay}, ${currentDateTime}`;
     currentTempDisplay.textContent = `${data.current.temp} ${tempUnit}`;
