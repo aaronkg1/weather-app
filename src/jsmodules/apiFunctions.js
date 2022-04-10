@@ -76,6 +76,7 @@ async function getDetailedForecast(location, units) {
     localStorage.setItem("lastLocation", JSON.stringify(weatherData));
     return weatherData;
   } catch(err) {
+      console.log(err);
     locationInfo = await getCurrentWeather("london", false);
     requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${locationInfo.lat}&lon=${locationInfo.lon}&units=${units}&appid=5cb6f84ef5e0c6b1272b46dc003282f2`;
     const response = await fetch(newRequest(requestUrl));

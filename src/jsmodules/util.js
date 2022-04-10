@@ -86,4 +86,9 @@ function getHourFromUnix(unix, timeZone) {
   return hour;
 }
 
-export { formatDate, getDayFromDate, getHourFromUnix, hasSunSet, oneByone };
+function timeout(prom, time){
+    Promise.race([prom, new Promise((_r, rej) => setTimeout(rej, time))]);
+}
+	
+
+export { formatDate, getDayFromDate, getHourFromUnix, hasSunSet, oneByone, timeout };

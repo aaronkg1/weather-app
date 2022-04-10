@@ -155,6 +155,12 @@ function backgroundSelect(data) {
     else if (mainWeather == 'Rain') {
         backgroundContainer.classList.add('rainy');
     }
+    else if (mainWeather == 'Clouds') {
+        if (data.isItNight) {
+            backgroundContainer.classList.add('cloudy-night');
+        }
+        else backgroundContainer.classList.add('cloudy');
+    }
 
     else backgroundContainer.classList.add('cloudy');
 }

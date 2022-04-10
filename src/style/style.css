@@ -51,6 +51,7 @@ table {
   --rainy-background: url(../assets/rainy-background.jpg);
   --cloudy-background: url(../assets/background.jpg);
   --night-background: url(../assets/clear-night-background.jpg);
+  --cloudy-night-background: url(../assets/cloudy-night-background.jpg);
   --clear-night-icon: url(../assets/clear-night.svg);
   --heavy-rain-icon: url(../assets/heavy-rain.svg);
   --light-rain-icon: url(../assets/light-rain.svg);
@@ -217,6 +218,12 @@ body {
 
 .night {
   background-image: var(--night-background);
+  animation:fadeInAnimation 3s normal both;
+  opacity: 1;
+}
+
+.cloudy-night {
+  background-image: var(--cloudy-night-background);
   animation:fadeInAnimation 3s normal both;
   opacity: 1;
 }
