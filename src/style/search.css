@@ -10,7 +10,7 @@
 }
 
 .search {
-    background: transparent;
+    background: rgba(155, 155, 155, 0.409);
     border: none;
     outline: none;
     color: white;
@@ -41,20 +41,21 @@
 
   @media only screen and (max-width: 768px) {
     .location-search{
-        justify-content: space-evenly;
+        justify-content: space-around;
         max-width: 100%;
         position: unset;
         margin-bottom: 2rem;
+        /* padding-left: 1rem;
+        padding-right: 1rem; */
         
     }
     .search {
-        background: transparent;
         border: none;
         outline: none;
         color: white;
         padding-left: 2rem;
         font-size: 3em;
-        max-width: 80%;
+        max-width: 70%;
     }
     .search-icon {
         height: 3rem;
@@ -63,7 +64,7 @@
     .location-icon {
         height: 3rem;
         min-width: 3rem;
-        padding-right: 2rem;
+        /* padding-right: 2rem; */
     }
   }
 

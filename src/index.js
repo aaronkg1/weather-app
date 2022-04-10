@@ -41,6 +41,10 @@ async function buildPageFromSavedData(units) {
 }
 
 searchButton.addEventListener("click", () => {
+  if (searchBar.value === "") {
+      searchBar.focus();
+      return
+  }  
   searchForLocation(units);
   domFunction.clearSearchBar();
   searchBar.blur();
