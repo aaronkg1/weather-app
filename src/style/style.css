@@ -52,6 +52,7 @@ table {
   --cloudy-background: url(../assets/background.jpg);
   --night-background: url(../assets/clear-night-background.jpg);
   --cloudy-night-background: url(../assets/cloudy-night-background.jpg);
+  --cloudy-night-mobile: url(../assets/cloudy-night-mobile.jpg);
   --clear-night-icon: url(../assets/clear-night.svg);
   --heavy-rain-icon: url(../assets/heavy-rain.svg);
   --light-rain-icon: url(../assets/light-rain.svg);
@@ -372,7 +373,9 @@ background-image: var(--sunny-icon);
   padding-right: 2rem;
 }
 
-
+.cloudy-night {
+  background-image: var(--cloudy-night-mobile);
+}
 
 
 }
